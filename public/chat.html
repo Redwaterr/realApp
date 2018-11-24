@@ -5,11 +5,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=none">
         <link rel="stylesheet" href="./css/styles.css">
-        <title>Chat | ChatApp</title>
+        <title>Katıl | Chat</title>
     </head>
     <body class="chat">
         <div class="chat__sidebar">
-            <h3>People</h3>
+            <h3>Online</h3>
             <div id="users"></div>
         </div>
 
@@ -19,9 +19,9 @@
             <div class="chat__footer">
         <form id="message-form">
             <input type="text" placeholder="Enter text" name="message" autofocus autocomplete="off"/>
-            <button id="send-text">Send</button>
+            <button id="send-text">Gönder</button>
         </form>
-        <button id="send-location">Send Location</button>
+        <button id="send-location">Konum paylaş</button>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
                     <span>{{createdAt}}</span>
                 </div>
                 <div class="message__body">
-                    <a href={{url}} target="_blank">My current location</a>
+                    <a href={{url}} target="_blank">Konumum</a>
                 </div>
             </li>
         </script>
