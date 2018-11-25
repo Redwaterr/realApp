@@ -8,32 +8,35 @@
     </head>
 
     <body class="centered-form">
+       
         <div class="centered-form__form">
-            <form action="./chat.html">
+            <form>
                 <div class="form-field">
-                    <h3>Sohbete Katıl</h3>
+                    <h3>Kayıt ol</h3>
                 </div>
                 <div class="form-field">
                     <label>Kullanıcı adınız</label>
-                    <input type="text" name="name" autofocus/>
+                    <input type="text" id="name" autofocus/>
                 </div>
                 <div class="form-field">
                     <label>Şifreniz</label>
-                    <input type="text" name="password" autofocus/>
+                    <input type="text" id="password" autofocus/>
                 </div>
                 <div class="form-field">
-                    <label>Oda adı</label>
-                    <input type="text" name="room"/>
+                    <label>Email</label>
+                    <input type="email" id="email"/>
                 </div>
                 <div class="form-field">
-                    <button>Giriş</button>
+                    <button id="kayit">Kayıt ol</button>
+                </div>
+                <div class="form-field">
+                    <a type="button" href="index.html">Giriş yap</a>
                 </div>
             </form>
-            <a type="button" href="signup.html">Kayıt ol</a>
-        </div>
+            
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="./js/signup.js"></script>
     </body>
 
 </html>
-
-
-

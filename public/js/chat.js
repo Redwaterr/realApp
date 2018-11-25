@@ -18,7 +18,6 @@ function scrollToBottom(){
 
 socket.on("connect",function() {       //BAĞLANTI SAĞLANDIĞINDA 
     var params = $.deparam(window.location.search);   //gelen parametreleri al 
-
     socket.emit("join",params,function (err) {    //Join emitini yak
         if(err) {
             alert(err);

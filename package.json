@@ -14,7 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "lodash": "^4.17.11",
     "moment": "^2.22.2",
-    "socket.io": "^2.1.1"
+    "mongoose": "^5.3.13",
+    "socket.io": "^2.1.1",
+    "validator": "^10.9.0",
+    "validators": "^0.3.1"
   }
 }

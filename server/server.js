@@ -3,6 +3,7 @@ const http = require("http");
 const express = require("express");
 const socketIO = require("socket.io");
 
+const {user} = require("../models/user");
 const {isRealString} = require("./utils/validation");
 const {Users} = require("./utils/users");
 const {generateMessage,generateLocationMessage} = require("./utils/message");
@@ -15,14 +16,26 @@ var io = socketIO(server);
 var users = new Users();
 
 
-
 app.use(express.static(publicPath));
+
 
 io.on("connection",(socket) => {   //CONNECTİON DURUMUNDA SOCKETİMİZLE EMİT VE ON İŞLEMLERİ YAPACAĞIZ.
     console.log("New user connected");
 
-    
- 
+
+    socket.on("userDB",(username,password,email) => {   //VERİLERİ ALDIK VE DENEDİK.
+       var newUser = user();
+       newUser.userName = username;
+       newUser.password = password;
+       newUser.email = email;
+       
+       newUser.save().then((doc) => {
+            socket.emit("correctMessage","Kayıt başarıyla tamamlandı.");
+       },(e) => {
+            socket.emit("correctMessage","Kayıt başarılı değil.Kullanıcı adı 3-12 karakter,şifre en az 6 karakter ve emailiniz doğru olmalı.");
+       });
+    });
+
     socket.on("join",(params,callback) => {   //CHat.js te ki johin emitiyle burayı yak
         if(!isRealString(params.name) || !isRealString(params.room)){  // Gerçek string değilse oda adı veya name hata callbacki yolla ve girme
             return callback("Name and room name are required");
@@ -66,6 +79,7 @@ io.on("connection",(socket) => {   //CONNECTİON DURUMUNDA SOCKETİMİZLE EMİT 
         }
     });
 });
+
 
 server.listen(port,() => {
     console.log("Server is running on port ",port);
